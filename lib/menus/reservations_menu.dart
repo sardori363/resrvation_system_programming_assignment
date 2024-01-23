@@ -1,8 +1,8 @@
 import '../models/food.dart';
 import 'menu.dart';
 
-class UsersMenu extends Menu{
-  static const id = "/users_menu";
+class ReservationsMenu extends Menu{
+  static const id = "/reservations_menu";
 
   @override
   build() async {
