@@ -12,7 +12,7 @@ class RestaurantMenuStaff extends Menu{
   @override
   build() async {
     print("Choose: ");
-    print(Menu.foodList);
+    // print(Menu.foodList);
     for(int i = 0; i < Menu.foodList.length; i++){
       print("$i - ${Menu.foodList[i].foodName} - \$${Menu.foodList[i].foodPrice}");
     }

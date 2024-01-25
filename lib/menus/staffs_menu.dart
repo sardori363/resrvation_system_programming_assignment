@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:restaurant_reservation/menus/add_meal_menu.dart';
 import 'package:restaurant_reservation/menus/menu.dart';
-import 'package:restaurant_reservation/menus/reservations_menu.dart';
+import 'package:restaurant_reservation/menus/reservations_menu_customer.dart';
+import 'package:restaurant_reservation/menus/reservations_menu_staff.dart';
 import 'package:restaurant_reservation/menus/restaurant_menu_for_staff.dart';
 import '../services/navigator_service.dart';
 
@@ -23,7 +24,7 @@ class StaffsMenu extends Menu{
         await Navigator.push(RestaurantMenuStaff());
       }
       case "2":{
-        await Navigator.push(ReservationsMenu());
+        await Navigator.push(ReservationsMenuStaff());
       }
       case "3":{
         await Navigator.push(AddMealMenu());

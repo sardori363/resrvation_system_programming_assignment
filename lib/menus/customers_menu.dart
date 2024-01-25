@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:restaurant_reservation/menus/reservations_menu.dart';
+import 'package:restaurant_reservation/menus/reservations_menu_customer.dart';
 import 'package:restaurant_reservation/menus/restaurant_menu_for_customers.dart';
 import 'package:restaurant_reservation/menus/restaurant_menu_for_staff.dart';
 import 'package:restaurant_reservation/menus/staffs_menu.dart';
@@ -23,7 +23,7 @@ class CustomersMenu extends Menu{
         await Navigator.push(RestaurantMenuCustomers());
       }
       case "2":{
-        await Navigator.push(ReservationsMenu());
+        await Navigator.push(ReservationsMenuCustomer());
       }
       case "0":{
         await Navigator.pop();

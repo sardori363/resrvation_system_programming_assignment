@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:restaurant_reservation/menus/customers_menu.dart';
 import 'package:restaurant_reservation/menus/restaurant_menu_for_customers.dart';
 import 'package:restaurant_reservation/menus/staffs_menu.dart';
 
@@ -19,7 +20,7 @@ class WelcomeMenu extends Menu{
 
     switch(menuSelection){
       case "1":{
-        await Navigator.push(RestaurantMenuCustomers());
+        await Navigator.push(CustomersMenu());
       }
       case "2":{
         await Navigator.push(StaffsMenu());

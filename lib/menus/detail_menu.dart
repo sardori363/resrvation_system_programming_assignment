@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:restaurant_reservation/menus/menu.dart';
+import 'package:restaurant_reservation/menus/staffs_menu.dart';
 import 'package:restaurant_reservation/models/category.dart';
 
 import '../models/food.dart';
-import 'menu.dart';
+import '../services/navigator_service.dart';
 
 class DetailMenu extends Menu{
   static const id = "/detail_menu";
@@ -18,7 +20,7 @@ class DetailMenu extends Menu{
         "Category: ${Menu.foodList[foodIndex].category.name}\n");
 
     print("1 - Edit current food\n"
-        "2 - Delete current food");
+        "2 - Delete current food\n");
     print("Type anything else to go back: ");
     int? menuSelection = int.parse(stdin.readLineSync()!);
     switch(menuSelection){
@@ -57,7 +59,16 @@ class DetailMenu extends Menu{
             "Price: ${Menu.foodList.last.foodPrice}\n"
             "Category: ${Menu.foodList.last.category.name}");
 
-      }
+      }case 2:{
+        print("Are you sure? Type 'yes' to remove:");
+        String? userchoice = stdin.readLineSync();
+        if(userchoice!.trim()=="yes"){
+          Menu.foodList.removeAt(foodIndex);
+          print("Deleted!");
+        } else{
+          await Navigator.push(StaffsMenu());
+        }
+    }
     }
   }
 }
