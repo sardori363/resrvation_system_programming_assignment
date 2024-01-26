@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:restaurant_reservation/menus/staffs_menu.dart';
+import 'package:restaurant_reservation/menus/customers_menu.dart';
 import 'package:restaurant_reservation/services/navigator_service.dart';
 
 import '../models/food.dart';
@@ -47,6 +47,10 @@ class ReservationsMenuCustomer extends Menu {
 
     List<Food> basket = [];
 
+    // Set minimum and maximum values for the number of meals
+    const int minMeals = 1;
+    const int maxMeals = 10;
+
     while (true) {
       print("Choose a meal by entering its NUMBER or ENTER to finish ordering:");
       for (int i = 0; i < Menu.foodList.length; i++) {
@@ -62,8 +66,8 @@ class ReservationsMenuCustomer extends Menu {
       print("Enter the quantity for this meal:");
       int? quantity = int.tryParse(stdin.readLineSync()!);
 
-      if (quantity == null || quantity <= 0) {
-        print("Invalid quantity. Please enter a valid number greater than 0.");
+      if (quantity == null || quantity < minMeals || quantity > maxMeals) {
+        print("Invalid quantity. Please enter a number between $minMeals and $maxMeals.");
         continue;
       }
 
@@ -104,10 +108,10 @@ class ReservationsMenuCustomer extends Menu {
       }
     }
 
-    // Check if the basket is empty
-    if (basket.isEmpty) {
-      print("Error: You must add at least 1 meal to confirm the order.");
-      await Navigator.push(StaffsMenu());
+    // Check if the number of meals is within the required range
+    if (basket.length < minMeals || basket.length > maxMeals) {
+      print("Invalid number of meals. You must order between $minMeals and $maxMeals meals.");
+      await Navigator.push(CustomersMenu());
     }
 
     // Display basket contents
