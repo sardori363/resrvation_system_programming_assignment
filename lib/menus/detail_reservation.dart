@@ -34,7 +34,11 @@ class DetailReservation extends Menu{
     print("1 - Edit current food\n"
         "2 - Delete current food\n");
     print("Type anything else to go back: ");
-    int? menuSelection = int.parse(stdin.readLineSync()!);
+    int? menuSelection = int.tryParse(stdin.readLineSync()!);
+    while(menuSelection == null){
+      print("Error! try again!");
+      menuSelection = int.tryParse(stdin.readLineSync()!);
+    }
     switch(menuSelection){
       case 1:{
         print("Enter new DAY or press ENTER to leave it the same: ");
